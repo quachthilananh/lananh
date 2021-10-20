@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanCafeK19Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ACCOUNT">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TypeAccount" Type="Int32" />
+    <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateCheckIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateCheckOut" Type="DateTime" Precision="3" />
+    <Property Name="IdTableFood" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Discount" Type="Int32" />
+    <Property Name="TotalPrice" Type="Int32" />
+    <NavigationProperty Name="TABLEFOOD" Relationship="Self.FK__BILL__IdTableFoo__3C69FB99" FromRole="BILL" ToRole="TABLEFOOD" />
+    <NavigationProperty Name="BILLINFOes" Relationship="Self.FK__BILLINFO__IdBill__48CFD27E" FromRole="BILL" ToRole="BILLINFO" />
+  </EntityType>
+  <EntityType Name="BILLINFO">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdBill" Type="Int32" Nullable="false" />
+    <Property Name="IdFood" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BILL" Relationship="Self.FK__BILLINFO__IdBill__48CFD27E" FromRole="BILLINFO" ToRole="BILL" />
+    <NavigationProperty Name="FOOD" Relationship="Self.FK__BILLINFO__IdFood__49C3F6B7" FromRole="BILLINFO" ToRole="FOOD" />
+  </EntityType>
+  <EntityType Name="FOOD">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IdCategory" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="BILLINFOes" Relationship="Self.FK__BILLINFO__IdFood__49C3F6B7" FromRole="FOOD" ToRole="BILLINFO" />
+    <NavigationProperty Name="FOODCATEGORY" Relationship="Self.FK__FOOD__IdCategory__2F10007B" FromRole="FOOD" ToRole="FOODCATEGORY" />
+  </EntityType>
+  <EntityType Name="FOODCATEGORY">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="FOODs" Relationship="Self.FK__FOOD__IdCategory__2F10007B" FromRole="FOODCATEGORY" ToRole="FOOD" />
+  </EntityType>
+  <EntityType Name="TABLEFOOD">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="BILLs" Relationship="Self.FK__BILL__IdTableFoo__3C69FB99" FromRole="TABLEFOOD" ToRole="BILL" />
+  </EntityType>
+  <Association Name="FK__BILL__IdTableFoo__3C69FB99">
+    <End Role="TABLEFOOD" Type="Self.TABLEFOOD" Multiplicity="1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TABLEFOOD">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="IdTableFood" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILLINFO__IdBill__48CFD27E">
+    <End Role="BILL" Type="Self.BILL" Multiplicity="1" />
+    <End Role="BILLINFO" Type="Self.BILLINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BILL">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BILLINFO">
+        <PropertyRef Name="IdBill" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILLINFO__IdFood__49C3F6B7">
+    <End Role="FOOD" Type="Self.FOOD" Multiplicity="1" />
+    <End Role="BILLINFO" Type="Self.BILLINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOOD">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BILLINFO">
+        <PropertyRef Name="IdFood" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FOOD__IdCategory__2F10007B">
+    <End Role="FOODCATEGORY" Type="Self.FOODCATEGORY" Multiplicity="1" />
+    <End Role="FOOD" Type="Self.FOOD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOODCATEGORY">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FOOD">
+        <PropertyRef Name="IdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanCafeK19Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
+    <EntitySet Name="BILLs" EntityType="Self.BILL" />
+    <EntitySet Name="BILLINFOes" EntityType="Self.BILLINFO" />
+    <EntitySet Name="FOODs" EntityType="Self.FOOD" />
+    <EntitySet Name="FOODCATEGORies" EntityType="Self.FOODCATEGORY" />
+    <EntitySet Name="TABLEFOODs" EntityType="Self.TABLEFOOD" />
+    <AssociationSet Name="FK__BILL__IdTableFoo__3C69FB99" Association="Self.FK__BILL__IdTableFoo__3C69FB99">
+      <End Role="TABLEFOOD" EntitySet="TABLEFOODs" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILLINFO__IdBill__48CFD27E" Association="Self.FK__BILLINFO__IdBill__48CFD27E">
+      <End Role="BILL" EntitySet="BILLs" />
+      <End Role="BILLINFO" EntitySet="BILLINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILLINFO__IdFood__49C3F6B7" Association="Self.FK__BILLINFO__IdFood__49C3F6B7">
+      <End Role="FOOD" EntitySet="FOODs" />
+      <End Role="BILLINFO" EntitySet="BILLINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FOOD__IdCategory__2F10007B" Association="Self.FK__FOOD__IdCategory__2F10007B">
+      <End Role="FOODCATEGORY" EntitySet="FOODCATEGORies" />
+      <End Role="FOOD" EntitySet="FOODs" />
+    </AssociationSet>
+    <FunctionImport Name="DeleteAccount">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteBill">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteBillInfo">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteFood">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteFoodCategory">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteTableFood">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetBillInfoForBill" ReturnType="Collection(QuanCafeK19Model.GetBillInfoForBill_Result)">
+      <Parameter Name="idBill" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetBillInfoForTableFood" ReturnType="Collection(QuanCafeK19Model.GetBillInfoForTableFood_Result)">
+      <Parameter Name="idTableFood" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetIDBillByIDBillInfo" ReturnType="Collection(Int32)">
+      <Parameter Name="idBillInfo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetIDBillLatest" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetListAccount" ReturnType="Collection(QuanCafeK19Model.GetListAccount_Result)" />
+    <FunctionImport Name="GetListBill" ReturnType="Collection(QuanCafeK19Model.GetListBill_Result)" />
+    <FunctionImport Name="GetListBillInfo" ReturnType="Collection(QuanCafeK19Model.GetListBillInfo_Result)" />
+    <FunctionImport Name="GetListFood" ReturnType="Collection(QuanCafeK19Model.GetListFood_Result)" />
+    <FunctionImport Name="GetListFoodByIDFoodCategory" ReturnType="Collection(QuanCafeK19Model.GetListFoodByIDFoodCategory_Result)">
+      <Parameter Name="idFoodCategory" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetListFoodCategory" ReturnType="Collection(QuanCafeK19Model.GetListFoodCategory_Result)" />
+    <FunctionImport Name="GetListTableFood" ReturnType="Collection(QuanCafeK19Model.GetListTableFood_Result)" />
+    <FunctionImport Name="GetTotalPriceByIDBill" ReturnType="Collection(Int32)">
+      <Parameter Name="idBill" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertAccount">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="displayName" Mode="In" Type="String" />
+      <Parameter Name="typeAccount" Mode="In" Type="Int32" />
+      <Parameter Name="avatar" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="InsertBill">
+      <Parameter Name="idTableFood" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertBillInfo">
+      <Parameter Name="idBill" Mode="In" Type="Int32" />
+      <Parameter Name="idFood" Mode="In" Type="Int32" />
+      <Parameter Name="count" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertFood">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="idCategory" Mode="In" Type="Int32" />
+      <Parameter Name="cost" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="count" Mode="In" Type="Int32" />
+      <Parameter Name="avatar" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="InsertFoodCategory">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="avatar" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="InsertTableFood">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LoginAccount" ReturnType="Collection(Int32)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Report" ReturnType="Collection(QuanCafeK19Model.Report_Result)" />
+    <FunctionImport Name="SearchAccountByDisplayName" ReturnType="Collection(QuanCafeK19Model.SearchAccountByDisplayName_Result)">
+      <Parameter Name="displayName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchAccountByUsername" ReturnType="Collection(QuanCafeK19Model.SearchAccountByUsername_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchBillByDate" ReturnType="Collection(QuanCafeK19Model.SearchBillByDate_Result)">
+      <Parameter Name="dateCheckIn" Mode="In" Type="DateTime" />
+      <Parameter Name="dateCheckOut" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFoodByName" ReturnType="Collection(QuanCafeK19Model.SearchFoodByName_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFoodCategoryByName" ReturnType="Collection(QuanCafeK19Model.SearchFoodCategoryByName_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchTableFoodByName" ReturnType="Collection(QuanCafeK19Model.SearchTableFoodByName_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TotalBill" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="TotalCategory" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="TotalCost" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="TotalFood" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="TotalPrice" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="TotalProductSold" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="TotalStaff" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="UpdateAccount">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="displayName" Mode="In" Type="String" />
+      <Parameter Name="typeAccount" Mode="In" Type="Int32" />
+      <Parameter Name="avatar" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateBill">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Int32" />
+      <Parameter Name="discount" Mode="In" Type="Int32" />
+      <Parameter Name="totalPrice" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateBillInfo">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="idBill" Mode="In" Type="Int32" />
+      <Parameter Name="idFood" Mode="In" Type="Int32" />
+      <Parameter Name="count" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateCountBillInfo">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="count" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateFood">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="idCategory" Mode="In" Type="Int32" />
+      <Parameter Name="cost" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="count" Mode="In" Type="Int32" />
+      <Parameter Name="avatar" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateFoodCategory">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="avatar" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateNameTableFood">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateStatusTableFood">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetBillInfoForBill_Result">
+    <Property Type="Int32" Name="Mã_hoá_đơn" Nullable="false" />
+    <Property Type="Int32" Name="Mã_chi_tiết_hoá_đơn" Nullable="false" />
+    <Property Type="String" Name="Tên_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Số_lượng" Nullable="false" />
+    <Property Type="Int32" Name="Tổng_tiền" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetBillInfoForTableFood_Result">
+    <Property Type="Int32" Name="Mã_riêng" Nullable="false" />
+    <Property Type="String" Name="Tên_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Số_lượng" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetListAccount_Result">
+    <Property Type="String" Name="Tên_tài_khoản" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Mật_khẩu" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tên_hiển_thị" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Loại_tài_khoản" Nullable="false" MaxLength="9" />
+    <Property Type="Binary" Name="Ảnh_đại_diện" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="GetListBill_Result">
+    <Property Type="Int32" Name="Mã_hoá_đơn" Nullable="false" />
+    <Property Type="DateTime" Name="Thời_gian_ghi" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Thời_gian_thanh_toán" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Giảm_giá" Nullable="true" />
+    <Property Type="String" Name="Tên_bàn" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Tổng_tiền" Nullable="true" />
+    <Property Type="String" Name="Trạng_thái" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="GetListBillInfo_Result">
+    <Property Type="Int32" Name="Mã_chi_tiết_hoá_đơn" Nullable="false" />
+    <Property Type="Int32" Name="Mã_hoá_đơn" Nullable="false" />
+    <Property Type="String" Name="Tên_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Số_lượng" Nullable="false" />
+    <Property Type="Int32" Name="Tổng_tiền" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetListFood_Result">
+    <Property Type="Int32" Name="Mã_thực_phẩm" Nullable="false" />
+    <Property Type="String" Name="Tên_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tên_loại_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Giá_vốn" Nullable="false" />
+    <Property Type="Int32" Name="Giá_bán" Nullable="false" />
+    <Property Type="Int32" Name="Số_lượng" Nullable="true" />
+    <Property Type="Binary" Name="Ảnh_minh_hoạ" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="GetListFoodByIDFoodCategory_Result">
+    <Property Type="Int32" Name="Mã_thực_phẩm" Nullable="false" />
+    <Property Type="String" Name="Tên_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tên_loại_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Giá_vốn" Nullable="false" />
+    <Property Type="Int32" Name="Giá_bán" Nullable="false" />
+    <Property Type="Int32" Name="Số_lượng" Nullable="true" />
+    <Property Type="Binary" Name="Ảnh_minh_hoạ" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="GetListFoodCategory_Result">
+    <Property Type="Int32" Name="Mã_loại" Nullable="false" />
+    <Property Type="String" Name="Tên_loại" Nullable="true" MaxLength="100" />
+    <Property Type="Binary" Name="Ảnh_minh_hoạ" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="GetListTableFood_Result">
+    <Property Type="Int32" Name="Mã_bàn" Nullable="false" />
+    <Property Type="String" Name="Tên_bàn" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Trạng_thái" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="Report_Result">
+    <Property Type="Int32" Name="Tháng" Nullable="true" />
+    <Property Type="Int32" Name="Số_sản_phẩm_đã_bán" Nullable="true" />
+    <Property Type="Int32" Name="Tổng_tiền" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SearchAccountByDisplayName_Result">
+    <Property Type="String" Name="Tên_tài_khoản" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Mật_khẩu" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tên_hiển_thị" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Loại_tài_khoản" Nullable="false" MaxLength="9" />
+    <Property Type="Binary" Name="Ảnh_đại_diện" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="SearchAccountByUsername_Result">
+    <Property Type="String" Name="Tên_tài_khoản" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Mật_khẩu" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tên_hiển_thị" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Loại_tài_khoản" Nullable="false" MaxLength="9" />
+    <Property Type="Binary" Name="Ảnh_đại_diện" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="SearchBillByDate_Result">
+    <Property Type="Int32" Name="Mã_hoá_đơn" Nullable="false" />
+    <Property Type="DateTime" Name="Thời_gian_ghi" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Thời_gian_thanh_toán" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Giảm_giá" Nullable="true" />
+    <Property Type="String" Name="Tên_bàn" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Tổng_tiền" Nullable="true" />
+    <Property Type="Int32" Name="Trạng_thái" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SearchFoodByName_Result">
+    <Property Type="Int32" Name="Mã_thực_phẩm" Nullable="false" />
+    <Property Type="String" Name="Tên_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tên_loại_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Giá_vốn" Nullable="false" />
+    <Property Type="Int32" Name="Giá_bán" Nullable="false" />
+    <Property Type="Int32" Name="Số_lượng" Nullable="true" />
+    <Property Type="Binary" Name="Ảnh_minh_hoạ" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="SearchFoodCategoryByName_Result">
+    <Property Type="Int32" Name="Mã_loại_thực_phẩm" Nullable="false" />
+    <Property Type="String" Name="Tên_loại_thực_phẩm" Nullable="true" MaxLength="100" />
+    <Property Type="Binary" Name="Ảnh_minh_hoạ" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="SearchTableFoodByName_Result">
+    <Property Type="Int32" Name="Mã_bàn" Nullable="false" />
+    <Property Type="String" Name="Tên_bàn" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Trạng_thái" Nullable="false" MaxLength="8" />
+  </ComplexType>
+</Schema>

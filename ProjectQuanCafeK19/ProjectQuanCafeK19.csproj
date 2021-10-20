@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{44655EEB-3F8E-435E-AE23-FFDB8D7F41A8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProjectQuanCafeK19</RootNamespace>
+    <AssemblyName>ProjectQuanCafeK19</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\QuanCafeK19\ProjectQuanCafeK19\bin\Debug\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>..\..\..\QuanCafeK19\ProjectQuanCafeK19\bin\Debug\Guna.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\QuanCafeK19\ProjectQuanCafeK19\bin\Debug\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XanderUI">
+      <HintPath>..\..\..\QuanCafeK19\ProjectQuanCafeK19\bin\Debug\XanderUI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ACCOUNT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BILL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BILLINFO.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DGVPrinter.cs" />
+    <Compile Include="FOOD.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FOODCATEGORY.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoading.designer.cs">
+      <DependentUpon>FormLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetBillInfoForBill_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBillInfoForTableFood_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetListAccount_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetListBillInfo_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetListBill_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetListFoodByIDFoodCategory_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetListFoodCategory_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetListFood_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetListTableFood_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Account\FormCreateAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Account\FormCreateAccount.Designer.cs">
+      <DependentUpon>FormCreateAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Account\FormEditAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Account\FormEditAccount.Designer.cs">
+      <DependentUpon>FormEditAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Account\UC_Account.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Account\UC_Account.Designer.cs">
+      <DependentUpon>UC_Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BillInfo\FormBillInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BillInfo\FormBillInfo.Designer.cs">
+      <DependentUpon>FormBillInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Bill\FormBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Bill\FormBill.Designer.cs">
+      <DependentUpon>FormBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Bill\UC_Bill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Bill\UC_Bill.Designer.cs">
+      <DependentUpon>UC_Bill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FoodCategory\FormCreateFoodCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FoodCategory\FormCreateFoodCategory.Designer.cs">
+      <DependentUpon>FormCreateFoodCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FoodCategory\FormEditFoodCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FoodCategory\FormEditFoodCategory.Designer.cs">
+      <DependentUpon>FormEditFoodCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FoodCategory\UC_FoodCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\FoodCategory\UC_FoodCategory.Designer.cs">
+      <DependentUpon>UC_FoodCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Food\FormCreateFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Food\FormCreateFood.Designer.cs">
+      <DependentUpon>FormCreateFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Food\FormEditFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Food\FormEditFood.Designer.cs">
+      <DependentUpon>FormEditFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Food\UC_Food.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Food\UC_Food.Designer.cs">
+      <DependentUpon>UC_Food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormLogOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormLogOut.Designer.cs">
+      <DependentUpon>FormLogOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Report\FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Report\FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Report\UC_Report.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Report\UC_Report.Designer.cs">
+      <DependentUpon>UC_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TableFood\FormTableFoodInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TableFood\FormTableFoodInfo.Designer.cs">
+      <DependentUpon>FormTableFoodInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TableFood\UC_TableFood.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\TableFood\UC_TableFood.Designer.cs">
+      <DependentUpon>UC_TableFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchAccountByDisplayName_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchAccountByUsername_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchBillByDate_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchFoodByName_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchFoodCategoryByName_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchTableFoodByName_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TABLEFOOD.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormLoading.resx">
+      <DependentUpon>FormLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Account\FormCreateAccount.resx">
+      <DependentUpon>FormCreateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Account\FormEditAccount.resx">
+      <DependentUpon>FormEditAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Account\UC_Account.resx">
+      <DependentUpon>UC_Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\BillInfo\FormBillInfo.resx">
+      <DependentUpon>FormBillInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Bill\FormBill.resx">
+      <DependentUpon>FormBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Bill\UC_Bill.resx">
+      <DependentUpon>UC_Bill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FoodCategory\FormCreateFoodCategory.resx">
+      <DependentUpon>FormCreateFoodCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FoodCategory\FormEditFoodCategory.resx">
+      <DependentUpon>FormEditFoodCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FoodCategory\UC_FoodCategory.resx">
+      <DependentUpon>UC_FoodCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Food\FormCreateFood.resx">
+      <DependentUpon>FormCreateFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Food\FormEditFood.resx">
+      <DependentUpon>FormEditFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Food\UC_Food.resx">
+      <DependentUpon>UC_Food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormLogOut.resx">
+      <DependentUpon>FormLogOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Report\FormReport.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Report\UC_Report.resx">
+      <DependentUpon>UC_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TableFood\FormTableFoodInfo.resx">
+      <DependentUpon>FormTableFoodInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TableFood\UC_TableFood.resx">
+      <DependentUpon>UC_TableFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\1161y.jpg" />
+    <None Include="Resources\111y.jpg" />
+    <None Include="Resources\lhuguydh.PNG" />
+    <None Include="Resources\2fde7d477f21907fc930.jpg" />
+    <None Include="Resources\workspace_480px.png" />
+    <None Include="Resources\vietnamdong.jpg" />
+    <None Include="Resources\user_groups_500px.png" />
+    <None Include="Resources\user_480px.png" />
+    <None Include="Resources\User Group_500px.png" />
+    <None Include="Resources\trash_480px.png" />
+    <None Include="Resources\the_toast_500px.png" />
+    <None Include="Resources\tableware2_500px.png" />
+    <None Include="Resources\tableware_500px.png" />
+    <None Include="Resources\settings_480px.png" />
+    <None Include="Resources\search_512px.png" />
+    <None Include="Resources\pdf_480px.png" />
+    <None Include="Resources\password_480px.png" />
+    <None Include="Resources\money_bag_500px.png" />
+    <None Include="Resources\money_512px.png" />
+    <None Include="Resources\milkshake_500px.png" />
+    <None Include="Resources\microsoft_excel_208px.png" />
+    <None Include="Resources\logout_rounded_up_512px.png" />
+    <None Include="Resources\logout_rounded_up_480px.png" />
+    <None Include="Resources\location_480px.png" />
+    <None Include="Resources\key_480px.png" />
+    <None Include="Resources\ingredients_500px.png" />
+    <None Include="Resources\img8.png" />
+    <None Include="Resources\img7.png" />
+    <None Include="Resources\img4.png" />
+    <None Include="Resources\food_and_wine_480px.png" />
+    <None Include="Resources\food_500px.png" />
+    <None Include="Resources\exit_480px.png" />
+    <None Include="Resources\create_480px.png" />
+    <None Include="Resources\Coffee Table_480px.png" />
+    <None Include="Resources\checkout_512px.png" />
+    <None Include="Resources\cash_in_hand_500px.png" />
+    <None Include="Resources\cancel_480px.png" />
+    <None Include="Resources\Cafe Building_480px.png" />
+    <None Include="Resources\back_to_480px.png" />
+    <None Include="Resources\add2_500px.png" />
+    <None Include="Resources\add_to_shopping_basket_512px.png" />
+    <None Include="Resources\add_500px.png" />
+    <None Include="Resources\add_480px.png" />
+    <None Include="Resources\account_500px.png" />
+    <None Include="Resources\account_96px.png" />
+    <None Include="Resources\7up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

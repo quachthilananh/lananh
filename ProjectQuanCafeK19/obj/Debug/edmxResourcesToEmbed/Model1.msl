@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuanCafeK19ModelStoreContainer" CdmEntityContainer="QuanCafeK19Entities">
+    <EntitySetMapping Name="ACCOUNTs">
+      <EntityTypeMapping TypeName="QuanCafeK19Model.ACCOUNT">
+        <MappingFragment StoreEntitySet="ACCOUNT">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="TypeAccount" ColumnName="TypeAccount" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BILLs">
+      <EntityTypeMapping TypeName="QuanCafeK19Model.BILL">
+        <MappingFragment StoreEntitySet="BILL">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateCheckIn" ColumnName="DateCheckIn" />
+          <ScalarProperty Name="DateCheckOut" ColumnName="DateCheckOut" />
+          <ScalarProperty Name="IdTableFood" ColumnName="IdTableFood" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BILLINFOes">
+      <EntityTypeMapping TypeName="QuanCafeK19Model.BILLINFO">
+        <MappingFragment StoreEntitySet="BILLINFO">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdBill" ColumnName="IdBill" />
+          <ScalarProperty Name="IdFood" ColumnName="IdFood" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FOODs">
+      <EntityTypeMapping TypeName="QuanCafeK19Model.FOOD">
+        <MappingFragment StoreEntitySet="FOOD">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FOODCATEGORies">
+      <EntityTypeMapping TypeName="QuanCafeK19Model.FOODCATEGORY">
+        <MappingFragment StoreEntitySet="FOODCATEGORY">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TABLEFOODs">
+      <EntityTypeMapping TypeName="QuanCafeK19Model.TABLEFOOD">
+        <MappingFragment StoreEntitySet="TABLEFOOD">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DeleteAccount" FunctionName="QuanCafeK19Model.Store.DeleteAccount" />
+    <FunctionImportMapping FunctionImportName="DeleteBill" FunctionName="QuanCafeK19Model.Store.DeleteBill" />
+    <FunctionImportMapping FunctionImportName="DeleteBillInfo" FunctionName="QuanCafeK19Model.Store.DeleteBillInfo" />
+    <FunctionImportMapping FunctionImportName="DeleteFood" FunctionName="QuanCafeK19Model.Store.DeleteFood" />
+    <FunctionImportMapping FunctionImportName="DeleteFoodCategory" FunctionName="QuanCafeK19Model.Store.DeleteFoodCategory" />
+    <FunctionImportMapping FunctionImportName="DeleteTableFood" FunctionName="QuanCafeK19Model.Store.DeleteTableFood" />
+    <FunctionImportMapping FunctionImportName="GetBillInfoForBill" FunctionName="QuanCafeK19Model.Store.GetBillInfoForBill">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.GetBillInfoForBill_Result">
+          <ScalarProperty Name="Mã_hoá_đơn" ColumnName="Mã hoá đơn" />
+          <ScalarProperty Name="Mã_chi_tiết_hoá_đơn" ColumnName="Mã chi tiết hoá đơn" />
+          <ScalarProperty Name="Tên_thực_phẩm" ColumnName="Tên thực phẩm" />
+          <ScalarProperty Name="Số_lượng" ColumnName="Số lượng" />
+          <ScalarProperty Name="Tổng_tiền" ColumnName="Tổng tiền" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBillInfoForTableFood" FunctionName="QuanCafeK19Model.Store.GetBillInfoForTableFood">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.GetBillInfoForTableFood_Result">
+          <ScalarProperty Name="Mã_riêng" ColumnName="Mã riêng" />
+          <ScalarProperty Name="Tên_thực_phẩm" ColumnName="Tên thực phẩm" />
+          <ScalarProperty Name="Số_lượng" ColumnName="Số lượng" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetIDBillByIDBillInfo" FunctionName="QuanCafeK19Model.Store.GetIDBillByIDBillInfo" />
+    <FunctionImportMapping FunctionImportName="GetIDBillLatest" FunctionName="QuanCafeK19Model.Store.GetIDBillLatest" />
+    <FunctionImportMapping FunctionImportName="GetListAccount" FunctionName="QuanCafeK19Model.Store.GetListAccount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.GetListAccount_Result">
+          <ScalarProperty Name="Tên_tài_khoản" ColumnName="Tên tài khoản" />
+          <ScalarProperty Name="Mật_khẩu" ColumnName="Mật khẩu" />
+          <ScalarProperty Name="Tên_hiển_thị" ColumnName="Tên hiển thị" />
+          <ScalarProperty Name="Loại_tài_khoản" ColumnName="Loại tài khoản" />
+          <ScalarProperty Name="Ảnh_đại_diện" ColumnName="Ảnh đại diện" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetListBill" FunctionName="QuanCafeK19Model.Store.GetListBill">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.GetListBill_Result">
+          <ScalarProperty Name="Mã_hoá_đơn" ColumnName="Mã hoá đơn" />
+          <ScalarProperty Name="Thời_gian_ghi" ColumnName="Thời gian ghi" />
+          <ScalarProperty Name="Thời_gian_thanh_toán" ColumnName="Thời gian thanh toán" />
+          <ScalarProperty Name="Giảm_giá" ColumnName="Giảm giá" />
+          <ScalarProperty Name="Tên_bàn" ColumnName="Tên bàn" />
+          <ScalarProperty Name="Tổng_tiền" ColumnName="Tổng tiền" />
+          <ScalarProperty Name="Trạng_thái" ColumnName="Trạng thái" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetListBillInfo" FunctionName="QuanCafeK19Model.Store.GetListBillInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.GetListBillInfo_Result">
+          <ScalarProperty Name="Mã_chi_tiết_hoá_đơn" ColumnName="Mã chi tiết hoá đơn" />
+          <ScalarProperty Name="Mã_hoá_đơn" ColumnName="Mã hoá đơn" />
+          <ScalarProperty Name="Tên_thực_phẩm" ColumnName="Tên thực phẩm" />
+          <ScalarProperty Name="Số_lượng" ColumnName="Số lượng" />
+          <ScalarProperty Name="Tổng_tiền" ColumnName="Tổng tiền" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetListFood" FunctionName="QuanCafeK19Model.Store.GetListFood">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.GetListFood_Result">
+          <ScalarProperty Name="Mã_thực_phẩm" ColumnName="Mã thực phẩm" />
+          <ScalarProperty Name="Tên_thực_phẩm" ColumnName="Tên thực phẩm" />
+          <ScalarProperty Name="Tên_loại_thực_phẩm" ColumnName="Tên loại thực phẩm" />
+          <ScalarProperty Name="Giá_vốn" ColumnName="Giá vốn" />
+          <ScalarProperty Name="Giá_bán" ColumnName="Giá bán" />
+          <ScalarProperty Name="Số_lượng" ColumnName="Số lượng" />
+          <ScalarProperty Name="Ảnh_minh_hoạ" ColumnName="Ảnh minh hoạ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetListFoodByIDFoodCategory" FunctionName="QuanCafeK19Model.Store.GetListFoodByIDFoodCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.GetListFoodByIDFoodCategory_Result">
+          <ScalarProperty Name="Mã_thực_phẩm" ColumnName="Mã thực phẩm" />
+          <ScalarProperty Name="Tên_thực_phẩm" ColumnName="Tên thực phẩm" />
+          <ScalarProperty Name="Tên_loại_thực_phẩm" ColumnName="Tên loại thực phẩm" />
+          <ScalarProperty Name="Giá_vốn" ColumnName="Giá vốn" />
+          <ScalarProperty Name="Giá_bán" ColumnName="Giá bán" />
+          <ScalarProperty Name="Số_lượng" ColumnName="Số lượng" />
+          <ScalarProperty Name="Ảnh_minh_hoạ" ColumnName="Ảnh minh hoạ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetListFoodCategory" FunctionName="QuanCafeK19Model.Store.GetListFoodCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.GetListFoodCategory_Result">
+          <ScalarProperty Name="Mã_loại" ColumnName="Mã loại" />
+          <ScalarProperty Name="Tên_loại" ColumnName="Tên loại" />
+          <ScalarProperty Name="Ảnh_minh_hoạ" ColumnName="Ảnh minh hoạ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetListTableFood" FunctionName="QuanCafeK19Model.Store.GetListTableFood">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.GetListTableFood_Result">
+          <ScalarProperty Name="Mã_bàn" ColumnName="Mã bàn" />
+          <ScalarProperty Name="Tên_bàn" ColumnName="Tên bàn" />
+          <ScalarProperty Name="Trạng_thái" ColumnName="Trạng thái" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTotalPriceByIDBill" FunctionName="QuanCafeK19Model.Store.GetTotalPriceByIDBill" />
+    <FunctionImportMapping FunctionImportName="InsertAccount" FunctionName="QuanCafeK19Model.Store.InsertAccount" />
+    <FunctionImportMapping FunctionImportName="InsertBill" FunctionName="QuanCafeK19Model.Store.InsertBill" />
+    <FunctionImportMapping FunctionImportName="InsertBillInfo" FunctionName="QuanCafeK19Model.Store.InsertBillInfo" />
+    <FunctionImportMapping FunctionImportName="InsertFood" FunctionName="QuanCafeK19Model.Store.InsertFood" />
+    <FunctionImportMapping FunctionImportName="InsertFoodCategory" FunctionName="QuanCafeK19Model.Store.InsertFoodCategory" />
+    <FunctionImportMapping FunctionImportName="InsertTableFood" FunctionName="QuanCafeK19Model.Store.InsertTableFood" />
+    <FunctionImportMapping FunctionImportName="LoginAccount" FunctionName="QuanCafeK19Model.Store.LoginAccount" />
+    <FunctionImportMapping FunctionImportName="Report" FunctionName="QuanCafeK19Model.Store.Report">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.Report_Result">
+          <ScalarProperty Name="Tháng" ColumnName="Tháng" />
+          <ScalarProperty Name="Số_sản_phẩm_đã_bán" ColumnName="Số sản phẩm đã bán" />
+          <ScalarProperty Name="Tổng_tiền" ColumnName="Tổng tiền" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchAccountByDisplayName" FunctionName="QuanCafeK19Model.Store.SearchAccountByDisplayName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.SearchAccountByDisplayName_Result">
+          <ScalarProperty Name="Tên_tài_khoản" ColumnName="Tên tài khoản" />
+          <ScalarProperty Name="Mật_khẩu" ColumnName="Mật khẩu" />
+          <ScalarProperty Name="Tên_hiển_thị" ColumnName="Tên hiển thị" />
+          <ScalarProperty Name="Loại_tài_khoản" ColumnName="Loại tài khoản" />
+          <ScalarProperty Name="Ảnh_đại_diện" ColumnName="Ảnh đại diện" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchAccountByUsername" FunctionName="QuanCafeK19Model.Store.SearchAccountByUsername">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.SearchAccountByUsername_Result">
+          <ScalarProperty Name="Tên_tài_khoản" ColumnName="Tên tài khoản" />
+          <ScalarProperty Name="Mật_khẩu" ColumnName="Mật khẩu" />
+          <ScalarProperty Name="Tên_hiển_thị" ColumnName="Tên hiển thị" />
+          <ScalarProperty Name="Loại_tài_khoản" ColumnName="Loại tài khoản" />
+          <ScalarProperty Name="Ảnh_đại_diện" ColumnName="Ảnh đại diện" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchBillByDate" FunctionName="QuanCafeK19Model.Store.SearchBillByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.SearchBillByDate_Result">
+          <ScalarProperty Name="Mã_hoá_đơn" ColumnName="Mã hoá đơn" />
+          <ScalarProperty Name="Thời_gian_ghi" ColumnName="Thời gian ghi" />
+          <ScalarProperty Name="Thời_gian_thanh_toán" ColumnName="Thời gian thanh toán" />
+          <ScalarProperty Name="Giảm_giá" ColumnName="Giảm giá" />
+          <ScalarProperty Name="Tên_bàn" ColumnName="Tên bàn" />
+          <ScalarProperty Name="Tổng_tiền" ColumnName="Tổng tiền" />
+          <ScalarProperty Name="Trạng_thái" ColumnName="Trạng thái" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchFoodByName" FunctionName="QuanCafeK19Model.Store.SearchFoodByName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.SearchFoodByName_Result">
+          <ScalarProperty Name="Mã_thực_phẩm" ColumnName="Mã thực phẩm" />
+          <ScalarProperty Name="Tên_thực_phẩm" ColumnName="Tên thực phẩm" />
+          <ScalarProperty Name="Tên_loại_thực_phẩm" ColumnName="Tên loại thực phẩm" />
+          <ScalarProperty Name="Giá_vốn" ColumnName="Giá vốn" />
+          <ScalarProperty Name="Giá_bán" ColumnName="Giá bán" />
+          <ScalarProperty Name="Số_lượng" ColumnName="Số lượng" />
+          <ScalarProperty Name="Ảnh_minh_hoạ" ColumnName="Ảnh minh hoạ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchFoodCategoryByName" FunctionName="QuanCafeK19Model.Store.SearchFoodCategoryByName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.SearchFoodCategoryByName_Result">
+          <ScalarProperty Name="Mã_loại_thực_phẩm" ColumnName="Mã loại thực phẩm" />
+          <ScalarProperty Name="Tên_loại_thực_phẩm" ColumnName="Tên loại thực phẩm" />
+          <ScalarProperty Name="Ảnh_minh_hoạ" ColumnName="Ảnh minh hoạ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchTableFoodByName" FunctionName="QuanCafeK19Model.Store.SearchTableFoodByName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanCafeK19Model.SearchTableFoodByName_Result">
+          <ScalarProperty Name="Mã_bàn" ColumnName="Mã bàn" />
+          <ScalarProperty Name="Tên_bàn" ColumnName="Tên bàn" />
+          <ScalarProperty Name="Trạng_thái" ColumnName="Trạng thái" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TotalBill" FunctionName="QuanCafeK19Model.Store.TotalBill" />
+    <FunctionImportMapping FunctionImportName="TotalCategory" FunctionName="QuanCafeK19Model.Store.TotalCategory" />
+    <FunctionImportMapping FunctionImportName="TotalCost" FunctionName="QuanCafeK19Model.Store.TotalCost" />
+    <FunctionImportMapping FunctionImportName="TotalFood" FunctionName="QuanCafeK19Model.Store.TotalFood" />
+    <FunctionImportMapping FunctionImportName="TotalPrice" FunctionName="QuanCafeK19Model.Store.TotalPrice" />
+    <FunctionImportMapping FunctionImportName="TotalProductSold" FunctionName="QuanCafeK19Model.Store.TotalProductSold" />
+    <FunctionImportMapping FunctionImportName="TotalStaff" FunctionName="QuanCafeK19Model.Store.TotalStaff" />
+    <FunctionImportMapping FunctionImportName="UpdateAccount" FunctionName="QuanCafeK19Model.Store.UpdateAccount" />
+    <FunctionImportMapping FunctionImportName="UpdateBill" FunctionName="QuanCafeK19Model.Store.UpdateBill" />
+    <FunctionImportMapping FunctionImportName="UpdateBillInfo" FunctionName="QuanCafeK19Model.Store.UpdateBillInfo" />
+    <FunctionImportMapping FunctionImportName="UpdateCountBillInfo" FunctionName="QuanCafeK19Model.Store.UpdateCountBillInfo" />
+    <FunctionImportMapping FunctionImportName="UpdateFood" FunctionName="QuanCafeK19Model.Store.UpdateFood" />
+    <FunctionImportMapping FunctionImportName="UpdateFoodCategory" FunctionName="QuanCafeK19Model.Store.UpdateFoodCategory" />
+    <FunctionImportMapping FunctionImportName="UpdateNameTableFood" FunctionName="QuanCafeK19Model.Store.UpdateNameTableFood" />
+    <FunctionImportMapping FunctionImportName="UpdateStatusTableFood" FunctionName="QuanCafeK19Model.Store.UpdateStatusTableFood" />
+  </EntityContainerMapping>
+</Mapping>
